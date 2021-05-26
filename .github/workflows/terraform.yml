@@ -40,4 +40,4 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -var=name=acr
+      run: terraform plan -var=name=containerregistry
