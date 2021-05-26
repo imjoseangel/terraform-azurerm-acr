@@ -30,9 +30,9 @@ jobs:
         body: |
           # Terraform Module - Azurerm Key Vault
 
-          [![Terraform](https://github.com/visma-raet/terraform-azurerm-keyvault/actions/workflows/terraform.yml/badge.svg)](https://github.com/visma-raet/terraform-azurerm-keyvault/actions/workflows/terraform.yml)
+          [![Terraform](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml/badge.svg)](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml)
 
-          A [Terraform][2] module to deploys a Key Vault on Azure
+          A [Terraform][2] module to deploys an Azure Container Registry
 
           By [visma-raet][3]
 
@@ -51,6 +51,6 @@ jobs:
 
           Licensed under [the MIT License][1].
 
-          [1]: https://github.com/visma-raet/terraform-azurerm-keyvault/blob/devel/LICENSE
+          [1]: https://github.com/visma-raet/terraform-azurerm-acr/blob/devel/LICENSE
           [2]: https://www.terraform.io/
           [3]: https://www.vismaraet.nl/

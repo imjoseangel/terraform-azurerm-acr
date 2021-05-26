@@ -40,4 +40,4 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -var=name=keyvault
+      run: terraform plan -var=name=acr
