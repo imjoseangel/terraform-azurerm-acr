@@ -17,9 +17,8 @@ variable "tf_name" {
 # ACR Variables
 #-------------------------------
 
-variable "acr_name" {
+variable "name" {
   type        = string
-  default     = "vismaraetacr"
   description = "Name of the Azure Container Registry."
 }
 
@@ -37,7 +36,7 @@ variable "resource_group_name" {
 
 variable "create_resource_group" {
   description = "Whether to create resource group and use it for all networking resources"
-  default     = false
+  default     = true
 }
 
 variable "admin_enabled" {
