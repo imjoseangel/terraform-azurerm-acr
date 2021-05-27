@@ -22,7 +22,7 @@ variable "name" {
   description = "Name of the Azure Container Registry."
 }
 
-variable "acr_sku" {
+variable "sku" {
   type        = string
   default     = "Basic"
   description = "The SKU name of the container registry."
@@ -57,6 +57,11 @@ variable "content_trust" {
   default     = false
 }
 
+variable "georeplication_location" {
+  description = "The Azure location where the container registry should be geo-replicated (sku must be Premium)."
+  type        = string
+  default     = "West Europe"
+}
 
 variable "tags" {
   description = "A map of tags to add to all resources"

@@ -33,10 +33,17 @@ resource "azurerm_container_registry" "acr" {
   name                = var.name
   resource_group_name = local.resource_group_name
   location            = local.location
-  sku                 = var.acr_sku
+  sku                 = var.sku
   admin_enabled       = var.admin_enabled
   trust_policy {
     enabled = var.content_trust
+  }
+
+  dynamic "georeplications" {
+    for_each = var.sku == "Premium" ? ["georeplica_activated"] : []
+    content {
+      location = var.georeplication_location
+    }
   }
 
 }
