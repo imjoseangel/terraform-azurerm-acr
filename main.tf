@@ -30,11 +30,11 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = var.name
-  resource_group_name = local.resource_group_name
-  location            = local.location
-  sku                 = var.sku
-  admin_enabled       = var.admin_enabled
+  name                      = var.name
+  resource_group_name       = local.resource_group_name
+  location                  = local.location
+  sku                       = var.sku
+  admin_enabled             = var.admin_enabled
   quarantine_policy_enabled = var.sku == "Premium" ? true : false
   trust_policy {
     enabled = var.content_trust
@@ -50,7 +50,7 @@ resource "azurerm_container_registry" "acr" {
   dynamic "retention_policy" {
     for_each = var.sku == "Premium" ? ["retention_policy_activated"] : []
     content {
-      days = var.retention_policy["days"]
+      days    = var.retention_policy["days"]
       enabled = var.retention_policy["enabled"]
     }
   }

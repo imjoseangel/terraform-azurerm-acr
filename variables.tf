@@ -52,10 +52,10 @@ variable "quarantine_policy_enabled" {
 }
 
 variable "retention_policy" {
-  type = map(string)
+  type        = map(string)
   description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
   default = {
-    days = 7
+    days    = 7
     enabled = false
   }
 }
