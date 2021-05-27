@@ -35,6 +35,7 @@ resource "azurerm_container_registry" "acr" {
   location            = local.location
   sku                 = var.sku
   admin_enabled       = var.admin_enabled
+  quarantine_policy_enabled = var.sku == "Premium" ? true : false
   trust_policy {
     enabled = var.content_trust
   }
@@ -43,6 +44,14 @@ resource "azurerm_container_registry" "acr" {
     for_each = var.sku == "Premium" ? ["georeplica_activated"] : []
     content {
       location = var.georeplication_location
+    }
+  }
+
+  dynamic "retention_policy" {
+    for_each = var.sku == "Premium" ? ["retention_policy_activated"] : []
+    content {
+      days = var.retention_policy["days"]
+      enabled = var.retention_policy["enabled"]
     }
   }
 

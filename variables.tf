@@ -45,6 +45,21 @@ variable "admin_enabled" {
   default     = false
 }
 
+variable "quarantine_policy_enabled" {
+  description = "Indicates whether quarantine policy is enabled."
+  type        = bool
+  default     = false
+}
+
+variable "retention_policy" {
+  type = map(string)
+  description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
+  default = {
+    days = 7
+    enabled = false
+  }
+}
+
 variable "roles" {
   description = "List of roles that should be assigned to sppal."
   type        = list(object({ ppal_id = string, role = string }))
