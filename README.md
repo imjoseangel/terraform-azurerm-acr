@@ -1,8 +1,8 @@
 # terraform-azurerm-acr
 
-## Deploys an Azure Container Registry
+## Deploys a Azure Container Registry
 
-This Terraform module creates an Azure Container Registry with supporting resources in Azure.
+This Terraform module creates a Azure Container Registry with supporting resources in Azure.
 
 ### NOTES
 
