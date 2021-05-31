@@ -39,6 +39,30 @@ variable "create_resource_group" {
   default     = true
 }
 
+variable "encryption_enabled" {
+  type        = bool
+  description = "Specifies whether the encryption useoptionr is enabled."
+  default     = false
+}
+
+variable "key_vault_key_id" {
+  type        = string
+  description = "The ID of the Key Vault Key."
+  default     = null
+}
+
+variable "identity_client_id" {
+  type        = string
+  description = "The client ID of the managed identity associated with the encryption key."
+  default     = null
+}
+
+variable "identity_id" {
+  type        = string
+  description = "The user assigned identity ID of the managed identity associated with the encryption key."
+  default     = null
+}
+
 variable "admin_enabled" {
   description = "Specifies whether the admin user is enabled."
   type        = bool

@@ -18,9 +18,9 @@ output "admin_password" {
   sensitive   = true
 }
 
-# output "acr_identity" {
+# output "acr_ppalid" {
 #   value       = azurerm_container_registry.acr.0.principal_id
-#   description = "ID of the Service Principal."
+#   description = "Azure Container Registry manage identity."
 #   sensitive = true
 # }
 
