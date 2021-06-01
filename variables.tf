@@ -42,7 +42,7 @@ variable "create_resource_group" {
 variable "encryption_enabled" {
   type        = bool
   description = "Specifies whether the encryption useoptionr is enabled."
-  default     = false
+  default     = true
 }
 
 variable "key_vault_key_id" {
@@ -81,6 +81,16 @@ variable "retention_policy" {
   default = {
     days    = 7
     enabled = false
+  }
+}
+
+variable "encryption" {
+  type        = map(string)
+  description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
+  default = {
+    enabled            = false
+    key_vault_key_id   = null
+    identity_client_id = null
   }
 }
 

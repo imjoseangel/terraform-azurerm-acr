@@ -36,7 +36,7 @@ resource "azurerm_container_registry" "acr" {
   sku                       = var.sku
   admin_enabled             = var.admin_enabled
   quarantine_policy_enabled = var.sku == "Premium" ? true : false
-  #system-assigned managed identity
+  #System  Managed Identity generated or User Managed Identity ID's which should be assigned to the Container Registry.
   identity {
     type = "SystemAssigned, UserAssigned"
     identity_ids = [
@@ -64,15 +64,14 @@ resource "azurerm_container_registry" "acr" {
   }
 
   dynamic "encryption" {
-    for_each = var.encryption_enabled == true ? ["encryption_activated"] : []
+    for_each = var.encryption["enabled"] == true ? ["encryption_activated"] : []
     content {
-      key_vault_key_id    = var.key_vault_key_id
-      identity_client_id = var.identity_client_id
-    #  identity_client_id = data.azurerm_client_config.current.object_id
-    #  identity_client_id = azurerm_container_registry.acr.identity[0]["principal_id"]
+      enabled            = var.content_trust == true ? false : var.encryption["enabled"]
+      key_vault_key_id   = var.encryption["key_vault_key_id"]
+      identity_client_id = var.encryption["identity_client_id"]
     }
   }
-
+  #load_balancer_sku = length(var.availability_zones) == 0 ? var.load_balancer_sku : "Standard"
 }
 
 
