@@ -9,14 +9,14 @@ This Terraform module creates a Azure Container Registry with supporting resourc
 * Default SKU Tier is set to Basic
 * Default Trust Policy is set to false
 * Default Admin user enable is set to false
-* Default Encrypion is set to false
+* Default Encryption is set to false
 * Content trust is currently not supported in a registry encrypted.
 
 ## Usage in Terraform 0.15
 
 ```terraform
 module "acr" {
-  source                    = "git@github.com:visma-raet/terraform-azurerm-acr.git"
+  source                  = "github.com/visma-raet/terraform-azurerm-acr"
   name                    = var.acr_name
   resource_group_name     = var.acr_rsg
   create_resource_group   = var.create_resource_group
@@ -50,17 +50,18 @@ module "acr" {
 }
 ```
 
-User Managed identiti identity_id             = data.azurerm_user_assigned_identity.uaiacr.ides are set with **identity_id** attribute. The module generate a System Managed Identity automatically but user managed ID can
-be assigned with this atribute.retention_policy
+User Managed identities are set with **identity_id** attribute. The module generate a System Managed Identity automatically but user managed ID can
+be assigned with this attribute.retention_policy
 
 ```terraform
 #Create User-Managed Identity
+
 data "azurerm_user_assigned_identity" "uaiacr" {
   name                = format("%s-uai", var.acr_name)
   resource_group_name = var.acr_rsg
 }
 
- identity_id             = data.azurerm_user_assigned_identity.uaiacr.id
+  identity_id         = data.azurerm_user_assigned_identity.uaiacr.id
 ```
 
 To Enable push and pull signed images (content trust) set **content_trust** attribute to true. If you enable it, encryption option automatically will be set to false.
@@ -101,11 +102,11 @@ retention_policy = {
   }
 ```
 
-In case you specifiy to enable user admin you can store the sensitive user&password in a secret vault. Make use of the [Key Vault](https://github.com/visma-raet/terraform-azurerm-keyvault) module for all the attributes commented above.
+In case you specify to enable user admin you can store the sensitive user&password in a secret vault. Make use of the [Key Vault](https://github.com/visma-raet/terraform-azurerm-keyvault) module for all the attributes commented above.
 
 ```terraform
 module "keyvault" {
-  source = "git@github.com:visma-raet/terraform-azurerm-keyvault.git"
+  source = "github.com/visma-raet/terraform-azurerm-keyvault"
 
   name                  = var.keyv_name
   resource_group_name   = var.acr_rsg
