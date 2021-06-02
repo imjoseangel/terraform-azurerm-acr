@@ -1,5 +1,7 @@
 # terraform-azurerm-acr
 
+[![Terraform](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml/badge.svg)](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml)
+
 ## Deploys a Azure Container Registry
 
 This Terraform module creates a Azure Container Registry with supporting resources in Azure.
