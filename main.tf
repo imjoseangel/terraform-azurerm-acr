@@ -23,6 +23,7 @@ data "azurerm_resource_group" "rgrp" {
 }
 
 resource "azurerm_resource_group" "rg" {
+  #ts:skip=accurics.azure.NS.272 RSG lock should be skipped for now.
   count    = var.create_resource_group ? 1 : 0
   name     = lower(var.resource_group_name)
   location = var.location
@@ -30,6 +31,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_container_registry" "acr" {
+  #ts:skip=accurics.azure.AKS.3 ACR lock should be skipped for now.
   name                      = var.name
   resource_group_name       = local.resource_group_name
   location                  = local.location
