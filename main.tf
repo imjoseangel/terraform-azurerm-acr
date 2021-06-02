@@ -71,18 +71,13 @@ resource "azurerm_container_registry" "acr" {
       identity_client_id = var.encryption["identity_client_id"]
     }
   }
-  #load_balancer_sku = length(var.availability_zones) == 0 ? var.load_balancer_sku : "Standard"
 }
 
-
-
-
-/* Phase 2 */
-/* resource "azurerm_role_assignment" "roles" {
+resource "azurerm_role_assignment" "roles" {
   for_each = local.roles_map
 
   scope                = azurerm_container_registry.acr.id
   role_definition_name = each.value.role
   principal_id         = each.value.ppal_id
 
-} */
+}
