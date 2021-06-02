@@ -26,6 +26,11 @@ variable "sku" {
   type        = string
   default     = "Basic"
   description = "The SKU name of the container registry."
+
+  validation {
+    condition     = contains(["Basic", "Standard ", "Premium"], var.sku)
+    error_message = "ERROR: Invalid SKU Tier must be one of Basic, Standard or Premium."
+  }
 }
 
 variable "resource_group_name" {
@@ -41,20 +46,8 @@ variable "create_resource_group" {
 
 variable "encryption_enabled" {
   type        = bool
-  description = "Specifies whether the encryption useoptionr is enabled."
+  description = "Specifies whether the encryption use option is enabled."
   default     = true
-}
-
-variable "key_vault_key_id" {
-  type        = string
-  description = "The ID of the Key Vault Key."
-  default     = null
-}
-
-variable "identity_client_id" {
-  type        = string
-  description = "The client ID of the managed identity associated with the encryption key."
-  default     = null
 }
 
 variable "identity_id" {
@@ -92,6 +85,7 @@ variable "encryption" {
     key_vault_key_id   = null
     identity_client_id = null
   }
+
 }
 
 variable "roles" {
