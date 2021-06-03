@@ -78,6 +78,7 @@ variable "retention_policy" {
 }
 
 variable "encryption" {
+  description = "Specifies whether the encryption user option is enabled. When enabled, the client ID of the managed identity associated with the encryption key has to be specified."
   type = object({
     enabled            = bool
     key_vault_key_id   = string
