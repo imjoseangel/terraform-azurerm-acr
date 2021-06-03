@@ -65,12 +65,21 @@ resource "azurerm_container_registry" "acr" {
     }
   }
 
+  #   dynamic "encryption" {
+  #     for_each = var.encryption["enabled"] && length(var.encryption["key_vault_key_id"]) > 0 && length(var.encryption["identity_client_id"]) > 0 ? ["encryption_activated"] : []
+  #     content {
+  #       enabled            = var.content_trust == true ? false : var.encryption["enabled"]
+  #       key_vault_key_id   = var.encryption["key_vault_key_id"]
+  #       identity_client_id = var.encryption["identity_client_id"]
+  #     }
+  #   }
+
   dynamic "encryption" {
-    for_each = var.encryption["enabled"] == true ? ["encryption_activated"] : []
+    for_each = var.encryption.enabled == true && var.encryption.key_vault_key_id != null && var.encryption.identity_client_id != null ? ["encryption_activated"] : []
     content {
-      enabled            = var.content_trust == true ? false : var.encryption["enabled"]
-      key_vault_key_id   = var.encryption["key_vault_key_id"]
-      identity_client_id = var.encryption["identity_client_id"]
+      enabled            = var.content_trust == true ? false : var.encryption.enabled
+      key_vault_key_id   = var.encryption.key_vault_key_id
+      identity_client_id = var.encryption.identity_client_id
     }
   }
 }

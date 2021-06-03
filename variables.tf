@@ -78,15 +78,28 @@ variable "retention_policy" {
 }
 
 variable "encryption" {
-  type        = map(string)
-  description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
+  type = object({
+    enabled            = bool
+    key_vault_key_id   = string
+    identity_client_id = string
+  })
   default = {
     enabled            = false
     key_vault_key_id   = null
     identity_client_id = null
   }
-
 }
+
+# variable "encryption" {
+#   type        = map(string)
+#   description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
+#   default = {
+#     enabled            = false
+#     key_vault_key_id   = null
+#     identity_client_id = null
+#   }
+
+# }
 
 variable "roles" {
   description = "List of roles that should be assigned to sppal."
