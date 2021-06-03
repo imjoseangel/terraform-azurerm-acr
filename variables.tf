@@ -90,17 +90,6 @@ variable "encryption" {
   }
 }
 
-# variable "encryption" {
-#   type        = map(string)
-#   description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
-#   default = {
-#     enabled            = false
-#     key_vault_key_id   = null
-#     identity_client_id = null
-#   }
-
-# }
-
 variable "roles" {
   description = "List of roles that should be assigned to sppal."
   type        = list(object({ ppal_id = string, role = string }))
