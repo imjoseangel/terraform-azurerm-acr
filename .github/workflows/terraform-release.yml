@@ -28,7 +28,7 @@ jobs:
         tag: ${{ steps.currenttag.outputs.tag }}
         name: Release ${{ steps.currenttag.outputs.tag }}
         body: |
-          # Terraform Module - Azurerm Key Vault
+          # Terraform Module - Azure Container Registry
 
           [![Terraform](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml/badge.svg)](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml)
 
