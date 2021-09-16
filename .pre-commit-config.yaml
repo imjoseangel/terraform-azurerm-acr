@@ -27,13 +27,6 @@ repos:
         entry: hooks/tf-sec
         types: [terraform]
 
-      - id: terrascan
-        name: Terrascan (local)
-        description: Terrascan is a static code analyzer for Infrastructure as Code.
-        language: script
-        entry: hooks/terrascan
-        types: [terraform]
-
       - id: detect-secrets
         name: Detect Secrets
         description: This hook detects and prevents high entropy strings from entering the codebase.

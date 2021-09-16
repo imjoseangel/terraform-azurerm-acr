@@ -37,7 +37,7 @@ resource "azurerm_container_registry" "acr" {
   location                  = local.location
   sku                       = var.sku
   admin_enabled             = var.admin_enabled
-  quarantine_policy_enabled = var.sku == "Premium" ? true : false
+  quarantine_policy_enabled = var.sku == "Premium" ? var.quarantine_policy_enabled : false
   #System  Managed Identity generated or User Managed Identity ID's which should be assigned to the Container Registry.
   identity {
     type = "SystemAssigned, UserAssigned"
