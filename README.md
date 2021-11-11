@@ -1,6 +1,6 @@
 # terraform-azurerm-acr
 
-[![Terraform](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml/badge.svg)](https://github.com/visma-raet/terraform-azurerm-acr/actions/workflows/terraform.yml)
+[![Terraform](https://github.com/imjoseangel/terraform-azurerm-acr/actions/workflows/terraform.yml/badge.svg)](https://github.com/imjoseangel/terraform-azurerm-acr/actions/workflows/terraform.yml)
 
 ## Deploys a Azure Container Registry
 
@@ -18,7 +18,7 @@ This Terraform module creates a Azure Container Registry with supporting resourc
 
 ```terraform
 module "acr" {
-  source                  = "github.com/visma-raet/terraform-azurerm-acr"
+  source                  = "github.com/imjoseangel/terraform-azurerm-acr"
   name                    = var.acr_name
   resource_group_name     = var.acr_rsg
   create_resource_group   = var.create_resource_group
@@ -104,11 +104,11 @@ retention_policy = {
   }
 ```
 
-In case you specify to enable user admin you can store the sensitive user&password in a secret vault. Make use of the [Key Vault](https://github.com/visma-raet/terraform-azurerm-keyvault) module for all the attributes commented above.
+In case you specify to enable user admin you can store the sensitive user&password in a secret vault. Make use of the [Key Vault](https://github.com/imjoseangel/terraform-azurerm-keyvault) module for all the attributes commented above.
 
 ```terraform
 module "keyvault" {
-  source = "github.com/visma-raet/terraform-azurerm-keyvault"
+  source = "github.com/imjoseangel/terraform-azurerm-keyvault"
 
   name                  = var.keyv_name
   resource_group_name   = var.acr_rsg
@@ -175,7 +175,7 @@ resource "azurerm_key_vault_secret" "acrstorage" {
 
 ## Authors
 
-Originally created by [Visma-raet](http://github.com/visma-raet)
+Originally created by [imjoseangel](http://github.com/imjoseangel)
 
 ## License
 
