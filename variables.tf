@@ -50,10 +50,16 @@ variable "encryption_enabled" {
   default     = true
 }
 
-variable "identity_id" {
+variable "identity_type" {
+  description = "The type of Managed Identity which should be assigned to the Container Registry. Possible values are 'SystemAssigned', 'UserAssigned' and 'SystemAssigned, UserAssigned'. If 'UserAssigned' is set, a 'user_assigned_identity_id' must be set as well."
   type        = string
-  description = "The user assigned identity ID of the managed identity associated with the encryption key."
-  default     = null
+  default     = "SystemAssigned"
+}
+
+variable "identity_ids" {
+  type        = list(string)
+  description = "(Optional) A list of User Managed Identity ID's which should be assigned to the Container Registry."
+  default     = []
 }
 
 variable "admin_enabled" {
