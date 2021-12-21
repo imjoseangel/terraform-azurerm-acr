@@ -59,7 +59,7 @@ variable "identity_type" {
 variable "identity_ids" {
   type        = list(string)
   description = "(Optional) A list of User Managed Identity ID's which should be assigned to the Container Registry."
-  default     = []
+  default     = null
 }
 
 variable "admin_enabled" {
