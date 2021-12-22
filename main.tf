@@ -71,6 +71,8 @@ resource "azurerm_container_registry" "acr" {
       identity_client_id = var.encryption.identity_client_id
     }
   }
+
+  tags = merge({ "ResourceName" = lower(var.name) }, var.tags, )
 }
 
 resource "azurerm_role_assignment" "roles" {
