@@ -34,7 +34,7 @@ module "acr" {
     identity_client_id = data.azurerm_user_assigned_identity.uaiacr.client_id
   }
   quarantine_policy_enabled = var.quarantine_policy_enabled
-   = {
+  = {
     days    = 5
     enabled = true
   }
