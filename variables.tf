@@ -7,12 +7,6 @@ variable "location" {
   description = "Name of the default object location."
 }
 
-variable "tf_name" {
-  type        = string
-  default     = "terraform"
-  description = "Name of the terraform object."
-}
-
 #-------------------------------
 # ACR Variables
 #-------------------------------
@@ -42,12 +36,7 @@ variable "resource_group_name" {
 variable "create_resource_group" {
   description = "Whether to create resource group and use it for all networking resources"
   default     = true
-}
-
-variable "encryption_enabled" {
   type        = bool
-  description = "Specifies whether the encryption use option is enabled."
-  default     = true
 }
 
 variable "identity_type" {
