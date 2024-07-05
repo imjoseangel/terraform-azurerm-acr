@@ -22,7 +22,7 @@ variable "sku" {
   description = "The SKU name of the container registry."
 
   validation {
-    condition     = contains(["Basic", "Standard ", "Premium"], var.sku)
+    condition     = contains(["Basic", "Standard", "Premium"], var.sku)
     error_message = "ERROR: Invalid SKU Tier must be one of Basic, Standard or Premium."
   }
 }
