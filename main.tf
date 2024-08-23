@@ -32,8 +32,8 @@ resource "azurerm_container_registry" "acr" {
   sku                       = var.sku
   admin_enabled             = var.admin_enabled
   quarantine_policy_enabled = var.sku == "Premium" ? var.quarantine_policy_enabled : false
-  trust_policy_enabled      = var.content_trust
-  #System  Managed Identity generated or User Managed Identity ID's which should be assigned to the Container Registry.
+  trust_policy_enabled      = var.sku == "Premium" ? var.trust_policy_enabled : false
+  retention_policy_in_days  = var.sku == "Premium" ? var.retention_policy_in_days : null
 
   identity {
     type         = var.identity_type
@@ -44,14 +44,6 @@ resource "azurerm_container_registry" "acr" {
     for_each = var.sku == "Premium" ? ["georeplica_activated"] : []
     content {
       location = var.georeplication_location
-    }
-  }
-
-  dynamic "retention_policy" {
-    for_each = var.sku == "Premium" ? ["retention_policy_activated"] : []
-    content {
-      days    = var.retention_policy["days"]
-      enabled = var.retention_policy["enabled"]
     }
   }
 

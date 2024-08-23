@@ -63,13 +63,10 @@ variable "quarantine_policy_enabled" {
   default     = false
 }
 
-variable "retention_policy" {
-  type        = map(string)
+variable "retention_policy_in_days" {
+  type        = number
   description = "If enabled define the numebr of days to retain an untagged manifest after which it gets purged"
-  default = {
-    days    = 7
-    enabled = false
-  }
+  default     = 7
 }
 
 variable "encryption" {
@@ -92,7 +89,7 @@ variable "roles" {
   default     = []
 }
 
-variable "content_trust" {
+variable "trust_policy_enabled" {
   description = "Enable Docker Content Trust on ACR."
   type        = bool
   default     = false
