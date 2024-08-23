@@ -32,14 +32,12 @@ resource "azurerm_container_registry" "acr" {
   sku                       = var.sku
   admin_enabled             = var.admin_enabled
   quarantine_policy_enabled = var.sku == "Premium" ? var.quarantine_policy_enabled : false
+  trust_policy_enabled      = var.content_trust
   #System  Managed Identity generated or User Managed Identity ID's which should be assigned to the Container Registry.
 
   identity {
     type         = var.identity_type
     identity_ids = var.identity_ids
-  }
-  trust_policy {
-    enabled = var.content_trust
   }
 
   dynamic "georeplications" {
@@ -60,7 +58,6 @@ resource "azurerm_container_registry" "acr" {
   dynamic "encryption" {
     for_each = var.encryption.enabled == true && var.encryption.key_vault_key_id != null && var.encryption.identity_client_id != null ? ["encryption_activated"] : []
     content {
-      enabled            = var.content_trust == true ? false : var.encryption.enabled
       key_vault_key_id   = var.encryption.key_vault_key_id
       identity_client_id = var.encryption.identity_client_id
     }
